@@ -29,6 +29,7 @@ public class CalcUI {
 
     public Parent getView() {
         GridPane layout = new GridPane();
+        layout.setHgap(2);
         layout.setAlignment(Pos.BOTTOM_LEFT);
         GridPane numButtonGrid = new GridPane();
         numButtonGrid.setVgap(2);
@@ -70,12 +71,13 @@ public class CalcUI {
         }
         for (Button button : numButtons) {
             button.setPrefSize(50, 50);
+            button.setStyle("-fx-background-color: red;");
         }
         for (int i = 0; i < 11; i++) {
             String temp = numButtons.get(i).getText();
             if (i == 9) {
                 numButtons.get(i).setOnMouseClicked(event -> {
-                    if (!numbers.getText().contains(".")) {
+                    if (!numbers.getText().contains(".") && !numbers.getText().isEmpty()) {
                         numbers.setText(numbers.getText() + temp);
                     }
                 });
